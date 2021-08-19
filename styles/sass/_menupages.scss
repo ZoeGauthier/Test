@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+
+
+
+
+.menupages__body{
+    h1{
+        font-family: "Shrikhand", sans-serif;
+        font-weight: normal;
+        font-size: 30px;
+    }
+    h2{
+        text-transform: uppercase;
+        font-weight: normal;
+        font-size: 20px;
+        padding: 0rem 0rem 0rem 0.5rem;
+        position: relative;
+        &::after{
+            content:"";
+            width: 3rem;
+            height: 0.2rem;
+            background-color: #99E2D0 ;
+            position: absolute;
+            bottom:-0.2rem;
+            left:0.5rem;
+        }
+    }
+    h3, p{
+        margin: 0px;
+    }
+
+    h3{
+        font-size: 21px;
+    }
+    p{
+        margin-top: 0.2rem;
+    }
+}
+
+
+
+
+.menupages__headerbar{
+        h1{
+            text-align: center;
+            margin: 0.5rem 0rem 0.5rem 0rem;
+        }
+        i{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left:1rem;
+            height: 2rem;
+            padding-left: 1rem;
+            transform: translateY(0.4rem);
+            font-size: 20px;
+        }
+    }
+
+
+.menupages{
+    max-width: 1280px;
+    margin: auto;
+    background-color: #f6f6f6;
+    border-radius: 2rem 2rem 0rem 0rem;
+    margin-top: -4rem;
+    position: relative;
+    overflow: hidden;
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0rem 2.5rem 0rem 1.5rem;
+        
+    }
+    &__hearth{
+        height: 2rem;
+        width: 2rem;
+        background-color: transparent;
+        border: transparent 0px solid;
+        padding: 0;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor: pointer;
+        position: relative;
+        background-color: black;
+        
+        &:hover::before {
+          opacity: 1;
+        }
+        
+        &::before {
+          opacity: 0;
+          transition: 0.5s;
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background:linear-gradient(0deg, $primary-color 0%,$secondary-color 100%);
+          border: #f6f6f6;
+        }
+        &__like{
+            transition-duration: .25s;
+            background-color: #f6f6f6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border: none;
+            mix-blend-mode: lighten;
+
+
+          }
+        
+        &:hover{
+            .button__like--noBg{
+                opacity: 0;
+            }
+        }
+      }
+
+}
+
+
+
+
+.bouton__commander{
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0rem 4rem 0rem;
+    p{
+        @include button
+    } 
+}
+
+.entrees, .plats, .desserts{
+    max-width: 100%;
+    padding: 0 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+
+}
+
+
+.choix{
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    border-radius: 0.75rem;
+    margin: 1rem 0;
+    box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    animation-fill-mode: forwards;
+    animation: itemAppear .6s;
+    animation-timing-function: cubic-bezier(.5,1.58,.34,.82);
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+
+    &__name{
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &__description{
+            margin: 0;
+            overflow: hidden;
+            white-space: nowrap;       
+            text-overflow: ellipsis;
+            font-size: 17px;
+
+        }
+        &__title{
+            overflow : hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;   
+            font-weight: bold;    
+            font-size: 19px;
+
+        }
+        }
+    &__prix{
+        display: flex;
+        align-items: flex-end;    
+        font-weight: bold;
+    }
+    &__confirm{
+        background-color: $tertiary-color;
+        margin: -1rem -5rem -1rem 1rem;
+        width: 4rem;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        transition-duration: 0.5s;
+    }
+    &:hover &__confirm {
+        margin-right: -1rem;
+      }
+
+    .fa-check-circle{
+        color: white;
+        font-size: 25px;
+        transform: rotate(-180deg);
+        transition-duration: 0.5s;
+        animation-timing-function: cubic-bezier(.5,1.58,.34,.82);
+    }
+
+    &:hover .fa-check-circle{
+            transform: rotate(0);   
+    }
+}
+
+@for $i from 0 to 10 {
+    .delay-#{$i} {
+      animation-delay:  #{$i/10}s;
+    }
+  }
+
+
+.menu__herobanner img{
+    width: 100%;
+    max-width: 100%;
+    max-height: 32rem;
+    object-fit: cover;
+    z-index: 5;
+}
+
+
+@media (min-width:1000px){
+    .menupages{
+        display: grid;
+        grid-template-rows: auto auto auto;
+        grid-template-columns: repeat(3, 1fr);
+        &__header{
+            grid-column: 1/-1;
+        }
+        &__bouton{
+            grid-column: 1/-1;
+        }
+    }
+}
+
+@media (max-width : 450px){
+    .menupages__body{
+        .choix__name__title{
+            font-size :16px;
+        }
+        .choix__name__description{
+            font-size: 13px;
+        }
+    }
+
+    .menupages__header{
+        padding: 0rem 1rem 0rem 2rem;
+
+    }
+    .text__bouton__commander{
+        font-size: 20px;
+    }
+      
+}
